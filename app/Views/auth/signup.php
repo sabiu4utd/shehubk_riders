@@ -1,0 +1,294 @@
+<!DOCTYPE html>   
+
+<html lang="en">
+
+<head>             
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">               
+
+    <title>Login - Shehubk Riders</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="<?php echo base_url() ?>assets/css/custom.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --primary-dark: #388E3C;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .login-image {
+            background: linear-gradient(45deg, rgba(76, 175, 80, 0.9), rgba(56, 142, 60, 0.9));
+            padding: 3rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-showcase {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .login-image img {
+            max-width: 80%;
+            height: auto;
+            margin: 10px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .login-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        .brand-description {
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-form {
+            padding: 3rem;
+        }
+
+        .form-control {
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+        }
+
+        .btn-login {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #6c757d;
+            margin: 1.5rem 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .divider span {
+            padding: 0 1rem;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-social {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .btn-social:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-2px);
+        }
+
+        .forgot-password {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-password:hover {
+            color: var(--primary-dark);
+        }
+
+        .register-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-link:hover {
+            color: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="row g-0">
+                <!-- Left side - Image and Branding -->
+                <div class="col-md-6">
+                    <div class="login-image">
+                        <div class="mb-4">
+                            <!-- <h1 class="brand-title">Shehubk Riders</h1> -->
+                            <!-- <p class="brand-description">Your trusted tricycle ride-hailing service. Fast, safe, and affordable transportation at your fingertips.</p> -->
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                      
+                        <br />
+                        <br />
+                        <div class="image-showcase">
+                            <img src="<?php echo base_url() ?>assets/images/1.png" alt="Tricycle Image 1" class="mb-3">
+                            <!-- <img src="../../assets/images/2.png" alt="Tricycle Image 2"> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right side - Login Form -->
+                <div class="col-md-6">
+                    <div class="login-form">
+                        <h2 class="mb-4">Sign Up</h2>
+                       
+                        <?php if(session()->getFlashdata('msg')): ?>
+                        <div class="alert alert-danger">
+                            <?php echo session()->getFlashdata('msg'); ?>
+                        </div>
+                        <?php endif; ?>
+                        <form method="post" action="<?php echo site_url('signup'); ?>" class="row g-3">
+                            
+
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" name="email" class="form-control" required >
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" required >
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="firstname" class="form-label">First Name</label>
+                                <input type="text" id="firstname" name="firstname" class="form-control" required  >
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="surname" class="form-label">Surname</label>
+                                <input type="text" id="surname" name="surname" class="form-control" required >
+                            </div>
+
+                            
+
+                            <div class="col-md-6">
+                                <label for="role" class="form-label">Role</label>
+                                <select id="role" name="role" class="form-select" required>
+                                    <option value=""  disabled>Select role</option>
+                                    <option value="rider" >Rider</option>
+                                    <option value="driver" >Driver</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="gender" class="form-label">Gender</label>
+                                <select id="gender" name="gender" class="form-select" required>
+                                    <option value=""  disabled>Select gender</option>
+                                    <option value="Male" >Male</option>
+                                    <option value="Female" >Female</option>
+                                  
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="address" class="form-label">Address</label>
+                                <textarea id="address" name="address" class="form-control" rows="3" required></textarea>
+                            </div>
+                             <div class="col-md-6">
+                                <label for="firstname" class="form-label">Password</label>
+                                <input type="password" id="password" name="password" class="form-control" required  >
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="surname" class="form-label">Confirm Password</label>
+                                <input type="password" id="surname" name="cpassword" class="form-control" required >
+                            </div>
+
+
+                            <div class="col-12 d-flex justify-content-between align-items-center mt-3">
+                               
+                                <button type="submit" class="btn btn-login">Create Account</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Dashboard - MyRides</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <!-- Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../../assets/css/custom.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h4 class="mb-0">Shehubk Riders</h4>
+        </div>
+        <div class="sidebar-nav">
+            <a href="dashboard.html" class="sidebar-link active">
+                <i class="fas fa-home me-2"></i> Dashboard
+            </a>
+            <a href="requests.html" class="sidebar-link">
+                <i class="fas fa-bell me-2"></i> Ride Requests
+            </a>
+            <a href="history.html" class="sidebar-link">
+                <i class="fas fa-history me-2"></i> Ride History
+            </a>
+            <a href="profile.html" class="sidebar-link">
+                <i class="fas fa-user me-2"></i> Profile
+            </a>
+            <a href="../../auth/login.html" class="sidebar-link">
+                <i class="fas fa-sign-out-alt me-2"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white mb-4 shadow-sm">
+            <div class="container-fluid">
+                <button class="btn btn-link d-lg-none" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="d-flex align-items-center">
+                    <span class="me-2">Welcome, <span id="userName">Ibrahim</span></span>
+                    <img src="../../assets/images/default-avatar.png" 
+                         class="rounded-circle" 
+                         width="32" 
+                         height="32" 
+                         alt="Profile">
+                </div>
+            </div>
+        </nav>
+
+        <!-- Dashboard Content -->
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <!-- Driver Status Card -->
+                <div class="col-md-4">
+                    <div class="dashboard-card">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="mb-0">Driver Status</h5>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" 
+                                       type="checkbox" 
+                                       id="onlineStatus" 
+                                       onchange="toggleOnlineStatus()">
+                                <label class="form-check-label" for="onlineStatus">Go Online</label>
+                            </div>
+                        </div>
+                        <div class="driver-stats">
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <div class="p-3 border rounded text-center">
+                                        <h3 class="mb-1">12</h3>
+                                        <small class="text-muted">Today's Rides</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="p-3 border rounded text-center">
+                                        <h3 class="mb-1">₦4,500</h3>
+                                        <small class="text-muted">Today's Earnings</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Location Card -->
+                <div class="col-md-8">
+                    <div class="dashboard-card p-0">
+                        <div id="map" class="map-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <!-- Active Request Card -->
+                <div class="col-12" id="activeRequestCard" style="display: none;">
+                    <div class="dashboard-card yellow-card">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="mb-0">Active Ride</h5>
+                            <span class="badge bg-warning text-dark">In Progress</span>
+                        </div>
+                        <div class="ride-info">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="../../assets/images/default-avatar.png" 
+                                     class="rounded-circle me-3" 
+                                     width="50" 
+                                     height="50" 
+                                     alt="Rider">
+                                <div>
+                                    <h6 class="mb-1">John Doe</h6>
+                                    <div class="text-muted">
+                                        <i class="fas fa-phone me-2"></i>
+                                        <span>+234 801 234 5678</span>
+                                    </div>
+                                </div>
+                                <a href="tel:+2348012345678" class="btn btn-outline-primary ms-auto">
+                                    Call Rider
+                                </a>
+                            </div>
+                            <div class="ride-route mb-3">
+                                <div class="d-flex mb-2">
+                                    <i class="fas fa-circle text-success me-3 mt-2"></i>
+                                    <div>
+                                        <small class="text-muted">Pickup Location</small>
+                                        <p class="mb-0">Ahmadu Bello Way</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <i class="fas fa-map-marker-alt text-danger me-3 mt-2"></i>
+                                    <div>
+                                        <small class="text-muted">Destination</small>
+                                        <p class="mb-0">Federal Medical Center</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-success flex-grow-1" onclick="completeRide()">
+                                    Complete Ride
+                                </button>
+                                <button class="btn btn-danger" onclick="cancelRide()">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Ride Requests -->
+                <div class="col-md-8">
+                    <h4 class="mb-3">Nearby Requests</h4>
+                    <div id="requestsList">
+                        <!-- Sample ride requests -->
+                        <div class="dashboard-card mb-3">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h6 class="mb-1">New Ride Request</h6>
+                                    <p class="text-muted mb-0">2.5 km away</p>
+                                </div>
+                                <span class="badge bg-primary">₦500</span>
+                            </div>
+                            <div class="ride-route mb-3">
+                                <div class="d-flex mb-2">
+                                    <i class="fas fa-circle text-success me-3 mt-2"></i>
+                                    <div>
+                                        <small class="text-muted">Pickup</small>
+                                        <p class="mb-0">Central Market</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <i class="fas fa-map-marker-alt text-danger me-3 mt-2"></i>
+                                    <div>
+                                        <small class="text-muted">Destination</small>
+                                        <p class="mb-0">Emir Palace</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary-custom w-100" onclick="acceptRequest(1)">
+                                Accept Request
+                            </button>
+                        </div>
+
+                        <div class="dashboard-card mb-3">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h6 class="mb-1">New Ride Request</h6>
+                                    <p class="text-muted mb-0">3.1 km away</p>
+                                </div>
+                                <span class="badge bg-primary">₦700</span>
+                            </div>
+                            <div class="ride-route mb-3">
+                                <div class="d-flex mb-2">
+                                    <i class="fas fa-circle text-success me-3 mt-2"></i>
+                                    <div>
+                                        <small class="text-muted">Pickup</small>
+                                        <p class="mb-0">Federal Polytechnic</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <i class="fas fa-map-marker-alt text-danger me-3 mt-2"></i>
+                                    <div>
+                                        <small class="text-muted">Destination</small>
+                                        <p class="mb-0">General Hospital</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary-custom w-100" onclick="acceptRequest(2)">
+                                Accept Request
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Summary -->
+                <div class="col-md-4">
+                    <h4 class="mb-3">Today's Summary</h4>
+                    <div class="dashboard-card">
+                        <div class="summary-stats">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <small class="text-muted">Total Distance</small>
+                                    <h5 class="mb-0">45.2 km</h5>
+                                </div>
+                                <i class="fas fa-route fa-2x text-primary"></i>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <small class="text-muted">Online Hours</small>
+                                    <h5 class="mb-0">6.5 hrs</h5>
+                                </div>
+                                <i class="fas fa-clock fa-2x text-warning"></i>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <small class="text-muted">Acceptance Rate</small>
+                                    <h5 class="mb-0">92%</h5>
+                                </div>
+                                <i class="fas fa-chart-line fa-2x text-success"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../../assets/js/map-manager.js"></script>
+    <script>
+        let mapManager;
+        let isOnline = false;
+        let locationUpdateInterval;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize map
+            mapManager = new MapManager('map');
+
+            // Set initial driver location
+            mapManager.addTricycleMarker(DEFAULT_LAT, DEFAULT_LNG, {
+                id: 'self',
+                name: "Your Location",
+                rating: 4.5
+            });
+
+            // Load user data
+            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+            if (userData.name) {
+                document.getElementById('userName').textContent = userData.name;
+            }
+        });
+
+        // Toggle online status
+        function toggleOnlineStatus() {
+            const statusSwitch = document.getElementById('onlineStatus');
+            isOnline = statusSwitch.checked;
+
+            if (isOnline) {
+                startLocationUpdates();
+            } else {
+                stopLocationUpdates();
+            }
+        }
+
+        // Start location updates
+        function startLocationUpdates() {
+            locationUpdateInterval = setInterval(async () => {
+                try {
+                    const location = await mapManager.getUserLocation();
+                    mapManager.updateMarkerPosition(0, location.lat, location.lng);
+                    
+                    // In a real app, you would send this location to your backend
+                    console.log('Location updated:', location);
+                } catch (error) {
+                    console.error('Error updating location:', error);
+                }
+            }, 10000); // Update every 10 seconds
+        }
+
+        // Stop location updates
+        function stopLocationUpdates() {
+            if (locationUpdateInterval) {
+                clearInterval(locationUpdateInterval);
+            }
+        }
+
+        // Accept ride request
+        function acceptRequest(requestId) {
+            // In a real app, you would make an API call to accept the request
+            document.getElementById('activeRequestCard').style.display = 'block';
+            
+            // Hide the accepted request from the list
+            const requestsList = document.getElementById('requestsList');
+            requestsList.removeChild(requestsList.children[requestId - 1]);
+        }
+
+        // Complete ride
+        function completeRide() {
+            if (confirm('Are you sure you want to complete this ride?')) {
+                document.getElementById('activeRequestCard').style.display = 'none';
+                // In a real app, you would make an API call to complete the ride
+            }
+        }
+
+        // Cancel ride
+        function cancelRide() {
+            if (confirm('Are you sure you want to cancel this ride?')) {
+                document.getElementById('activeRequestCard').style.display = 'none';
+                // In a real app, you would make an API call to cancel the ride
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+profile { profile_id, user_id, firstname, surname, othername, role, phone, email, address, dob, gender, joined, status, created_at, deleted_at, updated_at}
+users {user_id, username, password, mfactor, created_at, updated_at, deleted_at}
+rides{rides_id,	driver_id,rider_id, pickup,	destination, amount, payment_method,	status(completed, ongoing, cancelled), distance,	rating, created_at, updated_at, deleted_at}
+pricing{pricing_id, base_fare, per_km, created_at, updated_at, deleted_at}
+event_log{event_id, user_id, event, created_at, updated_at, deleted_at}
+vehicle_info{vehicle_id, driver_id, plate_number, year, Yellow, created_at, updated_at, deleted_at}
+wallet{wallet_id, user_id, amount, created_at, deleted_at, updated }
+wallet_payments(wallet_payment_id, user_id, amount, created_at, updated_at, deleted_at)

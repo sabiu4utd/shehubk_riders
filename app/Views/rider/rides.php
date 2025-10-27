@@ -13,36 +13,12 @@
     <!-- Google Fonts - Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="../../assets/css/custom.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/custom.css" rel="stylesheet">
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="sidebar-brand">
-            <h4 class="mb-0">Shehubk Riders</h4>
-        </div>
-        <div class="sidebar-nav">
-            <a href="dashboard.html" class="sidebar-link">
-                <i class="fas fa-home me-2"></i> Dashboard
-            </a>
-            <a href="book.html" class="sidebar-link">
-                <i class="fas fa-car me-2"></i> Book a Ride
-            </a>
-            <a href="rides.html" class="sidebar-link active">
-                <i class="fas fa-route me-2"></i> My Rides
-            </a>
-            <a href="payments.html" class="sidebar-link">
-                <i class="fas fa-wallet me-2"></i> Payments
-            </a>
-            <a href="profile.html" class="sidebar-link">
-                <i class="fas fa-user me-2"></i> Profile
-            </a>
-            <a href="../auth/login.html" class="sidebar-link">
-                <i class="fas fa-sign-out-alt me-2"></i> Logout
-            </a>
-        </div>
-    </div>
-
+    <?php  echo view('rider/includes/sidebar.php'); ?>
+ `
     <!-- Main Content -->
     <div class="main-content">
         <!-- Top Navbar -->
@@ -53,7 +29,7 @@
                 </button>
                 <div class="d-flex align-items-center">
                     <span class="me-2">Welcome, <span id="riderName">Sabiu</span></span>
-                    <img src="../../assets/images/default-avatar.png" 
+                    <img src="<?php echo base_url(); ?>assets/images/default-avatar.png" 
                          class="rounded-circle" 
                          width="32" 
                          height="32" 
@@ -70,7 +46,7 @@
                     <div class="col-md-8">
                         <h5 class="mb-4">Active Ride</h5>
                         <div class="d-flex align-items-center mb-3">
-                            <img src="../../assets/images/default-avatar.png" 
+                            <img src="<?php echo base_url(); ?>assets/images/default-avatar.png" 
                                  class="rounded-circle me-3" 
                                  width="50" 
                                  height="50" 
@@ -205,7 +181,7 @@
                         <div class="col-md-6">
                             <h6>Driver Information</h6>
                             <div class="d-flex align-items-center">
-                                <img src="../../assets/images/default-avatar.png" 
+                                <img src="<?php echo base_url(); ?>assets/images/default-avatar.png" 
                                      class="rounded-circle me-3" 
                                      width="50" 
                                      height="50" 
@@ -318,7 +294,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="../../assets/js/map-manager.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/map-manager.js"></script>
     <script>
         let mapManager;
         let activeMapManager;
@@ -387,7 +363,7 @@
                     <td>${ride.datetime}</td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <img src="../../assets/images/default-avatar.png" 
+                            <img src="<?php echo base_url(); ?>assets/images/default-avatar.png" 
                                  class="rounded-circle me-2" 
                                  width="24" 
                                  height="24" 

@@ -27,6 +27,13 @@ $routes->get('driver', 'Driver::index');
 
 //Rider
 $routes->get('rider', 'Rider::index');
+$routes->get('rider/rides', 'Rider::rides');
+$routes->get('rider/book', 'Rider::book');
+$routes->get('rider/payments', 'Rider::payments');
+$routes->get('rider/profile', 'Rider::profile');
+
+
+
 
 
 

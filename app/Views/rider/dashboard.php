@@ -17,25 +17,7 @@
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="sidebar-brand">
-            <h4 class="mb-0">Shehubk Riders</h4>
-        </div>
-        <div class="sidebar-nav">
-            <a href="dashboard.html" class="sidebar-link active">
-                <i class="fas fa-home me-2"></i> Dashboard
-            </a>
-            <a href="rides.html" class="sidebar-link">
-                <i class="fas fa-history me-2"></i> My Rides
-            </a>
-            <a href="profile.html" class="sidebar-link">
-                <i class="fas fa-user me-2"></i> Profile
-            </a>
-            <a href="../../auth/login.html" class="sidebar-link">
-                <i class="fas fa-sign-out-alt me-2"></i> Logout
-            </a>
-        </div>
-    </div>
+   <?php  echo view('rider/includes/sidebar.php'); ?>
 
     <!-- Main Content -->
     <div class="main-content">
@@ -47,7 +29,7 @@
                 </button>
                 <div class="d-flex align-items-center">
                     <span class="me-2">Welcome, <span id="userName">John Doe</span></span>
-                    <img src="../../assets/images/default-avatar.png" 
+                    <img src="<?php echo base_url(); ?>assets/images/default-avatar.png" 
                          class="rounded-circle" 
                          width="32" 
                          height="32" 
@@ -142,7 +124,7 @@
                 <div class="modal-body">
                     <div class="driver-info mb-3">
                         <div class="d-flex align-items-center">
-                            <img src="../../assets/images/default-avatar.png" 
+                            <img src="<?php echo base_url(); ?>assets/images/default-avatar.png" 
                                  class="rounded-circle me-3" 
                                  width="50" 
                                  height="50" 
@@ -184,7 +166,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="../../assets/js/map-manager.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/map-manager.js"></script>
     <script>
         let mapManager;
 

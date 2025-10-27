@@ -16,6 +16,11 @@ $routes->get('logout', 'Auth::logout');
 //Admin
 
 $routes->get('admin', 'Admin::index');
+$routes->get('admin/users', 'Admin::users');
+$routes->get('admin/rides', 'Admin::rides');
+$routes->get('admin/settings', 'Admin::settings');
+
+
 
 
 

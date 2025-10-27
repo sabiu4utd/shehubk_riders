@@ -17,28 +17,7 @@
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="sidebar-brand">
-            <h4 class="mb-0">Shehubk Riders</h4>
-        </div>
-        <div class="sidebar-nav">
-            <a href="dashboard.html" class="sidebar-link active">
-                <i class="fas fa-home me-2"></i> Dashboard
-            </a>
-            <a href="users.html" class="sidebar-link">
-                <i class="fas fa-users me-2"></i> Users
-            </a>
-            <a href="rides.html" class="sidebar-link">
-                <i class="fas fa-car me-2"></i> Rides
-            </a>
-            <a href="settings.html" class="sidebar-link">
-                <i class="fas fa-cog me-2"></i> Settings
-            </a>
-            <a href="../../auth/login.html" class="sidebar-link">
-                <i class="fas fa-sign-out-alt me-2"></i> Logout
-            </a>
-        </div>
-    </div>
+   <?php echo view('includes/admin/sidebar'); ?>
 
     <!-- Main Content -->
     <div class="main-content">
@@ -50,7 +29,7 @@
                 </button>
                 <div class="d-flex align-items-center">
                     <span class="me-2">Welcome, <span id="userName">Admin</span></span>
-                    <img src="../../assets/images/default-avatar.png" 
+                    <img src="<?php echo base_url() ?>assets/images/default-avatar.png" 
                          class="rounded-circle" 
                          width="32" 
                          height="32" 
@@ -160,7 +139,7 @@
                                     <span class="badge bg-success">In Progress</span>
                                 </div>
                                 <div class="d-flex gap-2 mb-2">
-                                    <img src="../../assets/images/default-avatar.png" 
+                                    <img src="<?php echo base_url() ?>assets/images/default-avatar.png" 
                                          class="rounded-circle" 
                                          width="32" 
                                          height="32" 
@@ -188,7 +167,7 @@
                                     <span class="badge bg-warning">Picking Up</span>
                                 </div>
                                 <div class="d-flex gap-2 mb-2">
-                                    <img src="../../assets/images/default-avatar.png" 
+                                    <img src="<?php echo base_url() ?>assets/images/default-avatar.png" 
                                          class="rounded-circle" 
                                          width="32" 
                                          height="32" 
@@ -261,7 +240,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="../../assets/js/map-manager.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/map-manager.js"></script>
     <script>
         let mapManager;
 

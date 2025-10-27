@@ -11,7 +11,7 @@
     <!-- Google Fonts - Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="../../assets/css/custom.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/custom.css" rel="stylesheet">
 </head>
 <body>
     <!-- Sidebar -->
@@ -20,19 +20,19 @@
             <h4 class="mb-0">Shehubk Riders</h4>
         </div>
         <div class="sidebar-nav">
-            <a href="dashboard.html" class="sidebar-link">
+            <a href="<?php echo site_url('admin') ?>" class="sidebar-link">
                 <i class="fas fa-home me-2"></i> Dashboard
             </a>
-            <a href="users.html" class="sidebar-link active">
+            <a href="<?php echo site_url('admin/users') ?>" class="sidebar-link active">
                 <i class="fas fa-users me-2"></i> Users
             </a>
-            <a href="rides.html" class="sidebar-link">
+            <a href="<?php echo site_url('admin/rides') ?>" class="sidebar-link">
                 <i class="fas fa-car me-2"></i> Rides
             </a>
-            <a href="settings.html" class="sidebar-link">
+            <a href="<?php echo site_url('admin/settings') ?>" class="sidebar-link">
                 <i class="fas fa-cog me-2"></i> Settings
             </a>
-            <a href="../../auth/login.html" class="sidebar-link">
+            <a href="<?php echo site_url('auth/logout') ?>" class="sidebar-link">
                 <i class="fas fa-sign-out-alt me-2"></i> Logout
             </a>
         </div>
@@ -48,7 +48,7 @@
                 </button>
                 <div class="d-flex align-items-center">
                     <span class="me-2">Welcome, <span id="userName">Admin</span></span>
-                    <img src="../../assets/images/default-avatar.png" 
+                    <img src="<?php echo base_url() ?>assets/images/default-avatar.png" 
                          class="rounded-circle" 
                          width="32" 
                          height="32" 
@@ -273,7 +273,7 @@
                         <div class="tab-pane fade show active" id="profile">
                             <div class="row">
                                 <div class="col-md-4 text-center">
-                                    <img src="../../assets/images/default-avatar.png" 
+                                    <img src="<?php echo base_url() ?>assets/images/default-avatar.png" 
                                          class="rounded-circle mb-3" 
                                          width="150" 
                                          height="150" 
@@ -404,7 +404,7 @@
                 email: 'ibrahim@example.com',
                 joined: '2023-09-15',
                 status: 'active',
-                avatar: '../../assets/images/default-avatar.png'
+                avatar: '<?php echo base_url() ?>assets/images/default-avatar.png'
             },
             {
                 id: 'U12346',
@@ -414,7 +414,7 @@
                 email: 'sabiu@example.com',
                 joined: '2023-09-20',
                 status: 'active',
-                avatar: '../../assets/images/default-avatar.png'
+                avatar: '<?php echo base_url() ?>assets/images/default-avatar.png'
             },
             {
                 id: 'U12347',
@@ -424,7 +424,7 @@
                 email: 'fahad@example.com',
                 joined: '2023-09-25',
                 status: 'pending',
-                avatar: '../../assets/images/default-avatar.png'
+                avatar: '<?php echo base_url() ?>assets/images/default-avatar.png'
             }
         ];
 

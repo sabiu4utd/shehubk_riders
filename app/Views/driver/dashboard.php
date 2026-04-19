@@ -21,23 +21,7 @@
         <div class="sidebar-brand">
             <h4 class="mb-0">Shehubk Riders</h4>
         </div>
-        <div class="sidebar-nav">
-            <a href="dashboard.html" class="sidebar-link active">
-                <i class="fas fa-home me-2"></i> Dashboard
-            </a>
-            <a href="requests.html" class="sidebar-link">
-                <i class="fas fa-bell me-2"></i> Ride Requests
-            </a>
-            <a href="history.html" class="sidebar-link">
-                <i class="fas fa-history me-2"></i> Ride History
-            </a>
-            <a href="profile.html" class="sidebar-link">
-                <i class="fas fa-user me-2"></i> Profile
-            </a>
-            <a href="<?php echo base_url() ?>auth/login.html" class="sidebar-link">
-                <i class="fas fa-sign-out-alt me-2"></i> Logout
-            </a>
-        </div>
+        <?php echo view('driver/includes/sidebar'); ?>
     </div>
 
     <!-- Main Content -->
@@ -50,7 +34,7 @@
                 </button>
                 <div class="d-flex align-items-center">
                     <span class="me-2">Welcome, <span id="userName">Ibrahim</span></span>
-                    <img src="../../assets/images/default-avatar.png" 
+                    <img src="<?php echo base_url() ?>assets/images/default-avatar.png" 
                          class="rounded-circle" 
                          width="32" 
                          height="32" 

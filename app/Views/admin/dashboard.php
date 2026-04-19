@@ -17,7 +17,7 @@
 </head>
 <body>
     <!-- Sidebar -->
-   <?php echo view('includes/admin/sidebar'); ?>
+   <?php echo view('admin/includes/sidebar'); ?>
 
     <!-- Main Content -->
     <div class="main-content">

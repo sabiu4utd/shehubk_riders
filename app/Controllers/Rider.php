@@ -6,7 +6,9 @@ class Rider extends BaseController
 {
     public function index(): string
     {
-        return view('rider/dashboard');
+        $locationModel = new \App\Models\Location_model();
+        $data['locations'] = $locationModel->findAll();
+        return view('rider/dashboard', $data);
     }
     public function rides(): string
     {
@@ -14,7 +16,9 @@ class Rider extends BaseController
     }
     public function book(): string
     {
-        return view('rider/book');
+        $locationModel = new \App\Models\Location_model();
+        $data['locations'] = $locationModel->findAll();
+        return view('rider/book', $data);
     }
     public function payments(): string
     {
